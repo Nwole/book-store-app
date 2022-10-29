@@ -1,9 +1,9 @@
 import { StyleSheet, Image, Text, View, Touchable, TouchableOpacity } from "react-native";
 import React from "react";
 
-const B = ({ item, navigation }) => {
+const BookItem = ({ item, navigation }) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('DetailScreen')}>
+    <TouchableOpacity onPress={() => navigation.navigate('DetailsScreen', {item: item})}>
     <View style={{ width: "100%", height: 70 }}>
       <View style={styles.bookcontainer}>
         <Image source={{ uri: item.imgUrl }} style={styles.bookImage} />
@@ -17,7 +17,7 @@ const B = ({ item, navigation }) => {
   );
 };
 
-export default DataList;
+export default BookItem;
 
 const styles = StyleSheet.create({
   bookcontainer: {
