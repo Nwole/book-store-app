@@ -65,12 +65,14 @@ export default function HomeScreen({ navigation }) {
   }, [searchInput]);
   return (
     <View style={{ flex: 1, padding: 24, rowGap: 20 }}>
-      <TextInput
-        placeholder="search"
-        style={style.searchInputContainer}
-        value={searchInput}
-        onChangeText={(text) => setSearchInput(text)}
-      />
+      <View>
+        <TextInput
+          placeholder="search"
+          style={style.searchInputContainer}
+          value={searchInput}
+          onChangeText={(text) => setSearchInput(text)}
+        />
+      </View>
       {isLoading ? (
         <ActivityIndicator
           testID="loading"
@@ -86,7 +88,9 @@ export default function HomeScreen({ navigation }) {
           ListEmptyComponent={emptyList}
           data={displayData}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <BookItem item={item} navigation={navigation} testID="book"/>}
+          renderItem={({ item }) => (
+            <BookItem item={item} navigation={navigation} testID="book" />
+          )}
         />
       )}
     </View>
@@ -96,7 +100,7 @@ const style = StyleSheet.create({
   searchInputContainer: {
     marginVertical: 10,
     height: 50,
-    backgroundColor: "#f7f7f7",
+    border: "1 solid red",
     borderRadius: 12,
     marginHorizontal: 20,
   },

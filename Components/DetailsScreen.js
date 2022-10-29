@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, Text, View } from 'react-native'
+import { StyleSheet,Image, SafeAreaView, Text, View } from 'react-native'
 import {AntDesign} from "@expo/vector-icons"
 import React from 'react'
 
@@ -6,14 +6,26 @@ const DetailsScreen = ({ navigation, route }) => {
     const item = route.params.item
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-      <Text>DetailScreen {item.title}</Text>
-      <View style={styles.headerBtn}>
+      <View style={styles.header}>
+      <View style={{flexDirection:'row'}}>
           <AntDesign
+          style={{}}
             name="arrowleft"
             size={25}
             onPress={() => navigation.goBack()}
           />
+          <Text style={{marginLeft:20}}>Back</Text>
         </View>
+        <View style={{marginBottom: 20}}>
+        <Image source={{uri:item.imgUrl}} style={styles.bookImage}/>
+        <View  style={{marginTop: 10}}>
+        <Text style={{fontSize:20, fontWeight:'bold'}}> {item.title}</Text>
+        <Text>About the book</Text>
+        <Text>{item.description}</Text>
+        </View>
+        </View>
+      </View>
+      
     </SafeAreaView>
   )
 }
@@ -23,17 +35,13 @@ export default DetailsScreen
 const styles = StyleSheet.create({
     header: {
         paddingVertical: 20,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        paddingHorizontal: 10,
+        marginHorizontal:20
       },
-      headerBtn: {
-        width: 50,
-        height: 50,
-        // backgroundColor: COLORS.light,
-        borderRadius: 10,
-        justifyContent: "center",
-        alignItems: "center",
+    
+      bookImage: {
+        width: "100%",
+        height: 300,
+        resizeMode: 'contain'
+        // height: 100,
       },
 })
