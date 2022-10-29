@@ -7,14 +7,14 @@ const DetailsScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
       <View style={styles.header}>
-      <View style={{flexDirection:'row'}}>
+      <View>
           <AntDesign
           style={{}}
             name="arrowleft"
             size={25}
             onPress={() => navigation.goBack()}
           />
-          <Text style={{marginLeft:20}}>Back</Text>
+
         </View>
         <View style={{marginBottom: 20}}>
         <Image source={{uri:item.imgUrl}} style={styles.bookImage}/>
